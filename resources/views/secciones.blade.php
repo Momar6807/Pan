@@ -1,4 +1,3 @@
-@extends('welcome')
 @section('menu')
 
 <section id="menu-list" class="section-padding">

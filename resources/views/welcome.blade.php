@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   @include('plantilla.head');
   <title>PANADERIA</title>
-  
 </head>
-
 <body>
   <!--banner-->
   <section id="banner">
     <div class="bg-color">
-      
     @include('plantilla.header')
     @section('presentacion')
       <div class="container">
