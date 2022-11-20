@@ -1,0 +1,3 @@
+@extends('welcome')
+@section('')
+@endsection
