@@ -20,3 +20,6 @@ Route::get('/', function () {
 Route::get('/como_llegar', function () {
     return view('apigeo');
 });
+
+
+Route::resource('users', '\App\Http\Controllers\UserController');

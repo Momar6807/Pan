@@ -29,7 +29,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 text-center marb-35">
-          <h1 class="header-h">Conoce a Panadería Equipo 1</h1>
+          <h1 class="header-h">Conoce a Panadería Le Mamalone</h1>
           <p class="header-p">Horneamos gran variedad de piezas de pan para todos los gustos por lo que estamos seguros de que encontrarás uno de tu agrado.
              Es importante destacar que seguimos estrictas normas de higiene por lo que podrás degustar tu pan de manera segura </p>
         </div>
