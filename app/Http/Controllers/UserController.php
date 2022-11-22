@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class UserController extends Controller
 {
@@ -13,7 +15,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.users.index');
+        $users = User::latest()->paginate(5);
+    
+        return view('dashboard.users.index',compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -23,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.users.create');
     }
 
     /**
@@ -34,7 +39,20 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required',
+            'password'=>'required',
+            'name'=>'required',
+            'last_name' => 'required',
+            'phone',
+            'address',
+            'imagen' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+  
+        $input = $request->all();
+        User::create($input);
+        return redirect()->route('users.index')
+                        ->with('success','Usuario creado exitosamente.');
     }
 
     /**
@@ -54,9 +72,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('dashboard.users.edit',compact('user'));
     }
 
     /**
@@ -66,9 +84,34 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $data, $id)
     {
-        //
+        $data->validate([
+            'id'=> 'required',
+            'email' => 'required',
+            'password'=>'required',
+            'name'=>'required',
+            'last_name' => 'required',
+            'phone',
+            'address',
+            'imagen' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+  
+        $input = $data->all();
+  
+        if ($image = $data->file('imagen')) {
+            $destinationPath = 'imagen/';
+            $userImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $userImage);
+            $input['imagen'] = "$userImage";
+        }else{
+            unset($input['imagen']);
+        }
+          
+        $data->update($input);
+    
+        return redirect()->route('users.index')
+                        ->with('success','Usuario Actualizado exitosamente');
     }
 
     /**
