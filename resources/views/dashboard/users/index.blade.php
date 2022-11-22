@@ -53,7 +53,7 @@
                                                 <button type="submit" class="btn btn-danger">Borrar</button>
                                             </form>
                                         </td>
-                                    </tr>';
+                                    </tr>
 
                                     @endforeach
                                 </tbody>
