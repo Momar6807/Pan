@@ -50,6 +50,14 @@ class UserController extends Controller
         ]);
   
         $input = $request->all();
+        
+        if ($image = $request->file('image')) {
+            $destinationPath = 'image/';
+            $userImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $userImage);
+            $input['image'] = "$userImage";
+        }
+          
         User::create($input);
         return redirect()->route('users.index')
                         ->with('success','Usuario creado exitosamente.');

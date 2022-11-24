@@ -43,7 +43,7 @@
                                         <td>*****</td>
                                         <td>{{$d->phone}}</td>
                                         <td>{{$d->address}}</td>
-                                        <td>{{$d->image}}</td>
+                                        <td><img src="image/{{$d->image}}" alt=""></td>
                                         
                                         <td>
                                             <form action="{{ route('users.destroy',$d->id) }}" method="POST">
