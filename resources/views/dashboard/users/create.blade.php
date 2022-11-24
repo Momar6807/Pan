@@ -71,7 +71,7 @@
                                     <div class="col-xs-12 col-sm-12 col-md-8">
                                         <div class="form-group">
                                             <strong>Imagen:</strong>
-                                            <input type="file" name="imagen" class="form-control">
+                                            <input type="file" name="image" class="form-control">
                                         </div>
                                     </div>
                                    

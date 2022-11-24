@@ -46,7 +46,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'phone',
             'address',
-            'imagen' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
   
         $input = $request->all();
@@ -94,18 +94,18 @@ class UserController extends Controller
             'last_name' => 'required',
             'phone',
             'address',
-            'imagen' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
   
         $input = $data->all();
   
-        if ($image = $data->file('imagen')) {
-            $destinationPath = 'imagen/';
+        if ($image = $data->file('image')) {
+            $destinationPath = 'image/';
             $userImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $userImage);
-            $input['imagen'] = "$userImage";
+            $input['image'] = "$userImage";
         }else{
-            unset($input['imagen']);
+            unset($input['image']);
         }
           
         $data->update($input);
