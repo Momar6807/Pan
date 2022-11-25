@@ -5,7 +5,7 @@ body {
     font-size: 16px;
 	font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
 ol, ul {
 	list-style: none;
@@ -23,7 +23,7 @@ table {
 	border-spacing: 0;
 }
 #banner{
-    background: url(../img/banner.jpg) no-repeat center top;
+    background: url(../img/2ban.jpg) no-repeat center top;
     background-size: cover;
     min-height: 630px;
 }
@@ -57,7 +57,7 @@ table {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: #111;
+    background-color: rgb(181, 102, 49);
     overflow-x: hidden;
     padding-top: 60px;
     transition: 0.5s;
@@ -380,7 +380,7 @@ table {
 }
 .footer {
     width: 100%;
-    background-color: #222;
+    background-color: rgb(107, 107, 107);
     position: relative;
     z-index: 1;
 }
