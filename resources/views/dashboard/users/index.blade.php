@@ -1,10 +1,10 @@
-@extends('dashboard.users.layout')
+@extends('dashboard.layout')
 @section('content')
 <div class="container" style="padding-top:5%;">
     <div class="row justify-content-center">
         <div class="col-md-12" style="width:100%">
             <div class="card">
-                <div class="card-header">Usuarios</div>
+                <div class="card-header"></div>
                 <div class="card-body -top-3">
                     <div class="pull-right">
                         <a class="btn btn-success" href="{{ route('users.create') }}"> Registrar nuevo Usuario</a>
@@ -65,7 +65,7 @@
             </div>
         </div>
         <script>
-            function tipoUsuarios() {
+            function tipoUsuarios () {
                 var x = document.getElementById("divTipo");
                 (x.style.display === "none" ? x.style.display = "block" : x.style.display = "none");
                 x = document.getElementById("divTipos");

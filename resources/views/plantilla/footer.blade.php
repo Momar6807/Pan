@@ -14,7 +14,6 @@
             <p class="copyright clear-float">
               © Le Mamalone todos los derechos reservados
               <div class="credits">
-                
                 Diseñado por <a href="">Jadev</a>
               </div>
             </p>

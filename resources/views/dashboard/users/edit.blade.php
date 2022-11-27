@@ -1,4 +1,4 @@
-@extends('dashboard.users.layout')
+@extends('dashboard.layout')
 @section('content')
 <div class="container" style="padding-top:5%;">
     <div class="col-md-12" style="width:100%">

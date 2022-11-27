@@ -1,4 +1,4 @@
-@extends('dashboard.users.layout')
+@extends('dashboard.layout')
 @section('content')
 <div class="container" style="padding-top:5%;">
     <div class="col-md-12" style="width:100%">
@@ -28,7 +28,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 col-sm-12 col-md-6">
                                         <div class="form-group">
-                                            <strong>Nombre:</strong>
+                                            <strong>Nombre(s):</strong>
                                             <input type="text" name="name" class="form-control">
                                         </div>
                                     </div>
@@ -38,7 +38,7 @@
                                             <input type="text" name="last_name" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Correo Electrónico:</strong>
                                             <input type="email" name="email" class="form-control">
@@ -52,23 +52,23 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
+                                            <strong>Confirmar Contraseña:</strong>
+                                            <input id="password-confirm" type="password" name="password_confirmation" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <div class="form-group">
                                             <strong>Teléfono:</strong>
                                             <input type="tel" name="phone" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
                                         <div class="form-group">
                                             <strong>Dirección:</strong>
                                             <input type="text" name="address" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-4">
-                                        <div class="form-group">
-                                            <strong>Confirmar Contraseña:</strong>
-                                            <input id="password-confirm" type="password" name="password_confirmation" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-12 col-md-8">
+                                    <div class="col-xs-12 col-sm-12 col-md-6">
                                         <div class="form-group">
                                             <strong>Imagen:</strong>
                                             <input type="file" name="image" class="form-control">

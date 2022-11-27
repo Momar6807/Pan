@@ -104,8 +104,9 @@ class UserController extends Controller
             'address',
             'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-  
+        $user = User::find($id);
         $input = $data->all();
+        
   
         if ($image = $data->file('image')) {
             $destinationPath = 'image/';
@@ -115,8 +116,8 @@ class UserController extends Controller
         }else{
             unset($input['image']);
         }
-          
-        $data->update($input);
+        $user->update($input);
+        
     
         return redirect()->route('users.index')
                         ->with('success','Usuario Actualizado exitosamente');
@@ -129,7 +130,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $user = User::find($id);
+        $message = ['Usuario eliminado correctamente', 'Error al eliminar'];
+        ($user->delete() == true) ? route('users.index', $message[0]) : route('users.index', $message[1]);
     }
 }
