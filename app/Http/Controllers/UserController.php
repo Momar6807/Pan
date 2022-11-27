@@ -137,7 +137,7 @@ class UserController extends Controller
         return redirect()->to('users')->with('success', $message[0]);
         }
         else{
-        return redirect()->to('users')->with('success' ,$message[1]);
+        return redirect()->to('users')->with('error' ,$message[1]);
         }
     }
 }

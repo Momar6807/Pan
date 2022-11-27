@@ -78,8 +78,15 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $message = ['Producto eliminado correctamente', 'Error al eliminar'];
+        if($product->delete()){
+        return redirect()->to('products')->with('success', $message[0]);
+        }
+        else{
+        return redirect()->to('products')->with('error' ,$message[1]);
+        }
     }
 }

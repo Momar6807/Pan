@@ -23,3 +23,4 @@ Route::get('/como_llegar', function () {
 
 
 Route::resource('users', '\App\Http\Controllers\UserController');
+Route::resource('products', '\App\Http\Controllers\ProductController');
