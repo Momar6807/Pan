@@ -133,6 +133,11 @@ class UserController extends Controller
     {   
         $user = User::find($id);
         $message = ['Usuario eliminado correctamente', 'Error al eliminar'];
-        ($user->delete() == true) ? route('users.index', $message[0]) : route('users.index', $message[1]);
+        if($user->delete()){
+        return redirect()->to('users')->with('success', $message[0]);
+        }
+        else{
+        return redirect()->to('users')->with('success' ,$message[1]);
+        }
     }
 }
