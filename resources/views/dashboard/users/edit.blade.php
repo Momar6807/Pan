@@ -21,14 +21,7 @@
                             <form action="{{ route('users.update',$user->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="row mb-3" style="display:inline-block">
-                                    <span>Cliente</span>
-                                    <label class="switch">
-                                        <input type="checkbox" id="tipoUsuario" name="tipoUsuario" value="empleado">
-                                        <span class="slider round" onclick="tipoUsuario()" id="tUsuario"></span>
-                                    </label>
-                                    <span class="">Empleado</span>
-                                </div>
+                                
                                 <div class="pull-right">
                                     <a class="btn btn-primary" href="{{ route('users.index') }}"> Regresar</a>
                                 </div>
@@ -72,14 +65,20 @@
                                     <div class="col-xs-12 col-sm-12 col-md-4">
                                         <div class="form-group">
                                             <strong>Dirección:</strong>
-                                            <input type="text" name="direccion" value="{{ $user->direccion }}" class="form-control">
+                                            <input type="text" name="direccion" value="{{ $user->address }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-8">
                                         <div class="form-group">
                                             <strong>Imagen:</strong>
                                             <input type="file" name="imagen" class="form-control">
-                                            <img src="/imagen/{{ $user->imagen }}" width="300px">
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-4">
+                                        <div class="form-group">
+                                            
+                                            <img src="/image/{{ $user->image }}" width="300px">
                                         </div>
                                     </div>
                                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

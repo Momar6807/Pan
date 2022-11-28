@@ -14,7 +14,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::latest()->paginate(5);
+    
+        return view('dashboard.products.index',compact('products'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -24,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.products.create');
     }
 
     /**
@@ -33,9 +36,30 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $data)
     {
-        //
+        $data->validate([
+            'name' => 'required',
+            'description'=>'required',
+            'stock'=>'required',
+            'price' => 'required',
+            'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $input = $data->all();
+        
+  
+        if ($image = $data->file('image')) {
+            $destinationPath = 'image/';
+            $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $productImage);
+            $input['image'] = "$productImage";
+        }
+        Product::create($input);
+        
+    
+        return redirect()->route('products.index')
+                        ->with('success','Usuario Actualizado exitosamente');
     }
 
     /**
@@ -57,7 +81,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('dashboard.products.edit',compact('product'));return view('dashboard.products.edit',compact('product'));
     }
 
     /**
@@ -67,9 +91,33 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $data, $id)
     {
-        //
+        $data->validate([
+            'id'=> 'required',
+            'name' => 'required',
+            'description'=>'required',
+            'stock'=>'required',
+            'price' => 'required',
+            'image' => '|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        $product = Product::find($id);
+        $input = $data->all();
+        
+  
+        if ($image = $data->file('image')) {
+            $destinationPath = 'image/';
+            $productImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $productImage);
+            $input['image'] = "$productImage";
+        }else{
+            unset($input['image']);
+        }
+        $product->update($input);
+        
+    
+        return redirect()->route('products.index')
+                        ->with('success','Usuario Actualizado exitosamente');
     }
 
     /**
